@@ -1,5 +1,5 @@
 context:
-  version: "0.1.17"
+  version: "0.1.18"
 
 package:
   name: herdr-core
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/herdrdev/herdr-core/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: c872f92437ebb72b9147a430127d9da57a307d0502aada04d08d26d4778bf094
+  sha256: 456eb4b50a20bab6a262261e6ca08364f3f242b716552f99107119069e4dbf19
   patches:
     # link conda-forge's libghostty-vt instead of building vendor/ghostty with zig
     - patches/0001-ghostty-vt-link-a-system-libghostty-vt-when-GHOSTTY_.patch
