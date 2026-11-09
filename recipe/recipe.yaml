@@ -1,5 +1,5 @@
 context:
-  version: "0.1.18"
+  version: "0.1.19"
 
 package:
   name: herdr-core
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/herdrdev/herdr-core/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: 456eb4b50a20bab6a262261e6ca08364f3f242b716552f99107119069e4dbf19
+  sha256: 12833c90516cf70f8489085323434244f300cd5a8437f667ff9f5b932c906302
   patches:
     # link conda-forge's libghostty-vt instead of building vendor/ghostty with zig
     - patches/0001-ghostty-vt-link-a-system-libghostty-vt-when-GHOSTTY_.patch
@@ -44,7 +44,9 @@ requirements:
     - cargo-bundle-licenses
     - cargo-auditable
   host:
-    - libghostty-vt
+    # libghostty-vt 1.0 renamed/re-numbered the C API (e.g. *_setopt -> *_set, new
+    # *_OPT_INVALID = 0 entries); herdr-core's bindings still target the pre-1.0 ABI
+    - libghostty-vt <1
 
 tests:
   - script:
